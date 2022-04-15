@@ -14,7 +14,7 @@ function Dropdown({ options, open, setOpen, handleToggle }) {
   const [selected, setSelected] = useState([]); /* list of selected options*/
 
 
-// compute color of an item
+// compute color of an item: colors[1] for selected, colors[0] for unselected
   function computeColor(index){
       if ((currSelection & (1 << index)) > 0){
           return colors[1];
@@ -42,8 +42,22 @@ function Dropdown({ options, open, setOpen, handleToggle }) {
     toggleSelection(index);
 
   }
+
+  function handleSelectAll(){
+    setSelected([...options]);
+    setCurrSelection((1 << options.length) - 1);
+  }
+  function handleSelectNone(){
+    setSelected([]);
+    setCurrSelection(0);
+  }
   return (
     <div className="dropdown">
+      <div className="dropdown__all-none">
+      <p className="dropdown__all" onClick={handleSelectAll} option="all">all</p>
+      <p>|</p>
+      <p className="dropdown__none" onClick={handleSelectNone} option="all">none</p>
+      </div>
       <button className="dropdown__btn" onClick={handleToggle}>
         <p className="dropdown__text">{selected.join(", ")}</p>
         {!open ? 

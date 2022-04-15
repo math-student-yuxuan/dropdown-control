@@ -4,7 +4,7 @@ import Dropdown from './Dropdown';
 
 function App() {
   const [open, setOpen] = useState(false); /* dropdown open/closed */
-  const options = ['first', 'second', 'third', 'fourth', 1, 2, 3, 4, 5];
+  const options = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'nineth', 'ten', 'eleventh', 'twelveth'];
 
   function handleToggle(){
     setOpen(!open)
